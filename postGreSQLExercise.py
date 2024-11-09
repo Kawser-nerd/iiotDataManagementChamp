@@ -35,4 +35,30 @@ results = cursor.fetchall()
 # Step 6: Print or work with the result you got after executing your queries
 # fetchone and fetchall(), both the methods return the values from the query as list
 # the values present in the results variable are in a list
-print(results)
+#print(results)
+
+# Update operation
+
+sqlQuery2 = ("SELECT occupancy, temperature, humidity from occupancy "
+             "where date='2015-02-02 14:19:00' or date='2015-02-02 14:19:59'")
+
+cursor.execute(sqlQuery2)
+results2 = cursor.fetchall()
+print(results2)
+
+# update query
+sqlQueryUpdate = ("Update occupancy set occupancy=0 "
+                  "where date='2015-02-02 14:19:00' or date='2015-02-02 14:19:59'")
+cursor.execute(sqlQueryUpdate)
+
+# when you will change, update something in a table, you need to commit it
+conn.commit()
+print(cursor.statusmessage)
+
+sqlQuery2 = ("SELECT occupancy, temperature, humidity from occupancy "
+             "where date='2015-02-02 14:19:00' or date='2015-02-02 14:19:59'")
+
+cursor.execute(sqlQuery2)
+results2 = cursor.fetchall()
+print(results2)
+
